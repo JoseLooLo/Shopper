@@ -11,21 +11,27 @@ services:
     ports:
       - 3000:3000
     depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - database.env
+    links:
       - database
-        #@TODO healthcheck
 
   database:
     image: mysql
     restart: always
-    environment:
-      #sEcUrItY
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: root
+    env_file:
+      - database.env
     networks:
       - net
     ports:
-      - 5432:5432
+      - 3306:3306
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -h localhost -u  root -proot" ]
+      interval: 3s
+      timeout: 5s
+      retries: 10
   
 networks:
   net:
