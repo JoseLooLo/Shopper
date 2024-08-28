@@ -20,7 +20,6 @@ const querrySchema = z.object({
 export const getCustomerList: RequestHandler = async (req, res, next) => {
 
     const parsedParams = paramsSchema.safeParse(req.params);
-    console.log(req.params);
     if (!parsedParams.success)
         return res.status(404).json(MEASURES_NOT_FOUND);
 
@@ -38,9 +37,8 @@ export const getCustomerList: RequestHandler = async (req, res, next) => {
         customer_code: customer_code,
         measure_type: measure_type
     };
-    console.log(filters);
+
     var measures = await getFilteredMeasures(filters);
-    console.log(measures);
     if (measures.length === 0)
         return res.status(404).json(MEASURES_NOT_FOUND);
 

@@ -27,6 +27,34 @@ export async function getMeasuresByCustomer(customerCode: string): Promise<Measu
   return measures;
 }
 
+export async function getMeasuresByUUID(uuid: string): Promise<Measure | null> {
+  const measures = await prisma.measure.findUnique({
+    where: {
+      measure_uuid: uuid,
+    },
+  });
+
+  return measures;
+}
+
+export async function confirmMeasureValueByUUID(uuid: string, value: number): Promise<Measure | null> {
+  try {
+    const updatedMeasure = await prisma.measure.update({
+      where: {
+        measure_uuid: uuid,
+      },
+      data: {
+        measure_value: value,
+        has_confirmed: true
+      },
+    });
+
+    return updatedMeasure;
+  } catch (error) {
+    return null;
+  }
+}
+
 export async function getFilteredMeasures(filters: MeasureFilterParams): Promise<Measure[]> {
   const measures = await prisma.measure.findMany({
     where: {
