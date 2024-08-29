@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export interface MeasureFilterParams {
   measure_uuid?: string;
-  image_url?: string;
+  image?: string;
   measure_value?: number;
   customer_code?: string;
   measure_type?: string;
@@ -59,7 +59,7 @@ export async function getFilteredMeasures(filters: MeasureFilterParams): Promise
   const measures = await prisma.measure.findMany({
     where: {
       ...(filters.measure_uuid && { measure_uuid: filters.measure_uuid }),
-      ...(filters.image_url && { image_url: filters.image_url }),
+      ...(filters.image && { image: filters.image }),
       ...(filters.measure_value !== undefined && { measure_value: filters.measure_value }),
       ...(filters.customer_code && { customer_code: filters.customer_code }),
       ...(filters.measure_type && { measure_type: filters.measure_type }),

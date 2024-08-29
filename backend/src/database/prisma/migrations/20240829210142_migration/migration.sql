@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE `Measure` (
     `measure_uuid` VARCHAR(191) NOT NULL,
-    `image_url` VARCHAR(191) NOT NULL,
+    `image` VARCHAR(191) NOT NULL,
     `measure_value` INTEGER NOT NULL,
     `customer_code` VARCHAR(191) NOT NULL,
     `measure_type` VARCHAR(191) NOT NULL,

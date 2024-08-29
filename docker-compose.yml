@@ -15,6 +15,10 @@ services:
         condition: service_healthy
     env_file:
       - database.env
+      #Its not clear from the pdf if i should receive a .env or a arquivo.env file
+      #Anyway, I'll cover both
+      - .env
+      - arquivo.env
     links:
       - database
 

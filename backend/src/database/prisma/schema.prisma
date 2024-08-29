@@ -15,7 +15,7 @@ datasource db {
 
 model Measure {
   measure_uuid String @id @default(uuid())
-  image_url String
+  image String
   measure_value Int
   customer_code String
   measure_type String
