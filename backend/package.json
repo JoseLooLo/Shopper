@@ -4,8 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "migrations": "prisma migrate dev -n migration && prisma migrate deploy && prisma generate",
-    "server": "nodemon -w . --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm ./src/app.ts"
+    "migrations": "prisma migrate dev -n init && prisma migrate deploy && prisma generate",
+    "server": "node --max-http-header-size 150000 --no-warnings=ExperimentalWarning --loader ts-node/esm ./src/app.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +15,15 @@
     "schema": "src/database/prisma/schema.prisma"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.17.1",
     "@prisma/client": "^5.19.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "jimp": "^0.22.12",
     "mysql2": "^3.11.0",
     "typescript": "^5.5.4",
+    "uuid": "^10.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

@@ -1,11 +1,8 @@
 import { RequestHandler } from "express";
 import { z } from 'zod'; 
-import { Prisma } from "@prisma/client";
 
 import {
     MeasureFilterParams,
-    getAllMeasures,
-    getMeasuresByCustomer,
     getFilteredMeasures
 } from "../database/models/measureModel.js"
 

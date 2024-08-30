@@ -2,10 +2,6 @@ import { RequestHandler } from "express";
 import { z } from 'zod';
 
 import {
-    MeasureFilterParams,
-    getAllMeasures,
-    getMeasuresByCustomer,
-    getFilteredMeasures,
     getMeasuresByUUID,
     confirmMeasureValueByUUID
 } from "../database/models/measureModel.js"
