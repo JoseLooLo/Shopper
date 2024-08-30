@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "migrations": "prisma migrate dev -n init && prisma migrate deploy && prisma generate",
-    "server": "node --max-http-header-size 150000 --no-warnings=ExperimentalWarning --loader ts-node/esm ./src/app.ts"
+    "server": "node --max-http-header-size 1500000 --no-warnings=ExperimentalWarning --loader ts-node/esm ./src/app.ts"
   },
   "keywords": [],
   "author": "",

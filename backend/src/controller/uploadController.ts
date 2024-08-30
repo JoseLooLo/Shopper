@@ -58,15 +58,15 @@ export const postUploadImage: RequestHandler = async (req, res, next) => {
 
     const image_path = await base64ToImage(fixed_image, random_uuid);
     if (!image_path)
-        return res.status(400).json(getInvalidDataStruct("bad image"));
+        return res.status(400).json(getInvalidDataStruct("bad image. Try a .jpge image"));
 
     const content = await run(public_path + image_path);
-    if (!content || !validadeContent(content))
-        return res.status(400).json(getInvalidDataStruct("bad image"));
+    if (!content)
+        return res.status(400).json(getInvalidDataStruct("Error with gemini"));
 
     const measured_value = validadeContent(content);
     if (!measured_value)
-        return res.status(400).json(getInvalidDataStruct("bad image"));
+        return res.status(400).json(getInvalidDataStruct("bad image. Failed to read the values on the meter"));
 
     const params: MeasureInsertParams = {
         measure_uuid: random_uuid,

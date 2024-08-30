@@ -20,7 +20,7 @@ export async function base64ToImage(base64: string, save_name: string) {
     const path = "uploads/" + name;
     try {
         const image = await Jimp.read(buffer);
-        await image.quality(20).writeAsync(public_path + path);
+        await image.quality(50).writeAsync(public_path + path);
     } catch (e) {
         //THIS **** JIMP LIBRARY HAS A BUG THAT CRASH ON RANDOM IMAGES. IF IT CRASHED SEND ANOTHER ONE. GOOD LUCK, YOU WILL NEED IT.
         return null;
